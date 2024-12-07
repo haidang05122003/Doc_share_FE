@@ -1,19 +1,20 @@
 import { Header } from "@/components/header"
 import { Navigation } from "@/components/navigation"
-import { Hero } from "@/components/hero"
-import { FeaturedSlides } from "@/components/featured-slides"
+import { CategoryHeader } from "@/components/category-header"
+import { PresentationGrid } from "@/components/presentation-grid"
 import { Footer } from "@/components/footer"
 
-export default function Home() {
+export default function BusinessCategoryPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <Navigation />
+      <Navigation currentCategory="business" />
       <main className="flex-grow">
-        <Hero />
-        <FeaturedSlides />
+        <CategoryHeader />
+        <PresentationGrid />
       </main>
       <Footer />
     </div>
   )
 }
+
