@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { LayoutDashboard, FileText, Users, Settings, LogOut, BookOpen, Tag, FolderTree } from 'lucide-react'
+import { LayoutDashboard, FileText, Users, Settings, LogOut, BookOpen, Tag, FolderTree, User } from 'lucide-react'
 
 const sidebarItems = [
   { icon: LayoutDashboard, label: "Tổng quan", href: "/admin" },
@@ -12,6 +12,7 @@ const sidebarItems = [
   { icon: BookOpen, label: "Quản lý vai trò", href: "/admin/roles" },
   { icon: FolderTree, label: "Quản lý danh mục", href: "/admin/categories" },
   { icon: Tag, label: "Quản lý thẻ", href: "/admin/tags" },
+  { icon: User, label: "Tài khoản cá nhân", href: "/admin/account" },
   { icon: Settings, label: "Cài đặt", href: "/admin/settings" },
 ]
 

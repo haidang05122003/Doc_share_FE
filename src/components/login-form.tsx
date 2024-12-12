@@ -1,44 +1,47 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { FaGoogle, FaFacebook, FaLinkedin } from 'react-icons/fa'
+import { Loading } from "@/components/ui/loading"
 
 export function LoginForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would typically handle the login logic
+    setIsLoading(true)
+    // Simulate login process
+    await new Promise(resolve => setTimeout(resolve, 1500))
     console.log('Login attempted with:', email, password)
-    // For now, let's just redirect to the home page
-    router.push('/')
+    setIsLoading(false)
+    // In a real app, you would handle login logic here
   }
 
   return (
-    <Card className="w-full">
+    <Card className="w-full max-w-md mx-auto">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold text-center">Login to SlideShare</CardTitle>
+        <CardTitle className="text-2xl font-bold text-center">Welcome Back!</CardTitle>
+        <div className="w-full h-2 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"></div>
       </CardHeader>
       <CardContent className="grid gap-4">
         <div className="grid grid-cols-3 gap-4">
-          <Button variant="outline" className="hover:bg-blue-100">
-            <FaFacebook className="mr-2 h-4 w-4 text-blue-600" />
+          <Button variant="outline" className="hover:bg-blue-100 hover:text-blue-600 transition-colors">
+            <FaFacebook className="mr-2 h-4 w-4" />
             Facebook
           </Button>
-          <Button variant="outline" className="hover:bg-red-100">
-            <FaGoogle className="mr-2 h-4 w-4 text-red-600" />
+          <Button variant="outline" className="hover:bg-red-100 hover:text-red-600 transition-colors">
+            <FaGoogle className="mr-2 h-4 w-4" />
             Google
           </Button>
-          <Button variant="outline" className="hover:bg-blue-100">
-            <FaLinkedin className="mr-2 h-4 w-4 text-blue-600" />
+          <Button variant="outline" className="hover:bg-blue-100 hover:text-blue-600 transition-colors">
+            <FaLinkedin className="mr-2 h-4 w-4" />
             LinkedIn
           </Button>
         </div>
@@ -60,6 +63,7 @@ export function LoginForm() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              className="border-2 border-gray-300 focus:border-blue-500 transition-colors"
             />
           </div>
           <div className="grid gap-2 mt-4">
@@ -70,9 +74,12 @@ export function LoginForm() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="border-2 border-gray-300 focus:border-blue-500 transition-colors"
             />
           </div>
-          <Button className="w-full mt-6" type="submit">Sign In</Button>
+          <Button className="w-full mt-6 bg-gradient-to-r from-pink-500 to-yellow-500 hover:from-pink-600 hover:to-yellow-600 text-white transition-all duration-300 transform hover:scale-105" type="submit" disabled={isLoading}>
+            {isLoading ? <Loading size={20} /> : "Sign In"}
+          </Button>
         </form>
       </CardContent>
       <CardFooter className="flex flex-col items-center">

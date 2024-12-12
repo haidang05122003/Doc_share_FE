@@ -15,7 +15,7 @@ export function SignUpForm() {
   const [confirmPassword, setConfirmPassword] = useState('')
   const router = useRouter()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (password !== confirmPassword) {
       alert("Passwords don't match")
@@ -23,8 +23,8 @@ export function SignUpForm() {
     }
     // Here you would typically handle the signup logic
     console.log('Signup attempted with:', email, password)
-    // For now, let's just redirect to the home page
-    router.push('/')
+    // For now, let's just redirect to the login page
+    router.push('/login')
   }
 
   return (

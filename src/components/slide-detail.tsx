@@ -1,5 +1,3 @@
-'use client'
-
 import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -16,7 +14,7 @@ interface SlideDetailProps {
   description: string
 }
 
-export function SlideDetail({title, author, organization, slides, views, likes: initialLikes, description }: SlideDetailProps) {
+export function SlideDetail({ id, title, author, organization, slides, views, likes: initialLikes, description }: SlideDetailProps) {
   const [likes, setLikes] = useState(initialLikes)
 
   const handleLike = () => {

@@ -19,11 +19,11 @@ import {
 } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { ChevronDown, ChevronUp, HelpCircle } from 'lucide-react'
-/* import { useDropzone } from 'react-dropzone'*/
+import { useDropzone } from 'react-dropzone'
 
 interface UploadFormProps {
-  file?: File
-  onReset?: () => void
+  file: File
+  onReset: () => void
 }
 
 export function UploadForm({ file, onReset }: UploadFormProps) {
